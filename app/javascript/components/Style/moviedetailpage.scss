@@ -1,0 +1,17 @@
+.page {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-column {
+  background: #fff;
+  width: 40%;
+
+  img {
+    height: 100%;
+  }
+}
+
+.right-column {
+  width: 60%;
+}

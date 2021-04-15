@@ -1,5 +1,8 @@
+@import "./colors.scss";
+
 .card {
-  border: 1px solid #efefef;
+  border: 1px solid $borderColor;
+  border-radius: 36px;
   background: #fff;
 }
 
@@ -9,7 +12,7 @@
   justify-content: center;
   img {
     height: 237px;
-    border: 1px solid #efefef;
+    border: 1px solid $borderColor;
   }
 }
 

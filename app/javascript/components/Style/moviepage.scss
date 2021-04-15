@@ -1,3 +1,11 @@
+@import "./colors.scss";
+
+body {
+  margin: 0px;
+  color: #000;
+  font-family: Nunito, sans-serif;
+}
+
 .home {
   text-align: center;
   margin-left: auto;
@@ -9,6 +17,9 @@
 
   h1 {
     font-size: 42px;
+    background: -webkit-linear-gradient($favePrimaryColor, $faveSecondaryColor);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
