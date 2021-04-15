@@ -15,7 +15,7 @@ export default function MovieDetailPage(props) {
         setLoaded(true);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [loaded]);
   const [movie, setMovie] = useState({});
   const [loaded, setLoaded] = useState(false);
   return (

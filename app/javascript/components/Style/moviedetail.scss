@@ -1,0 +1,46 @@
+@import "./colors.scss";
+h1 {
+  color: $favePrimaryColor;
+  margin-bottom: 0px;
+}
+
+h4 {
+  color: $favePrimaryColor;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container {
+  padding-left: 10px;
+  border-top: 2px solid $borderColor;
+  &:first-child {
+    border-top: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0px 10px;
+  }
+  &:last-child {
+    padding-bottom: 20px;
+  }
+}
+
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  padding: 6px 12px;
+  background-color: $favePrimaryColor;
+  border-radius: 3px;
+  color: #fff;
+  height: min-content;
+}

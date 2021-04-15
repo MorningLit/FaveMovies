@@ -1,4 +1,5 @@
 import React from "react";
+import "../Style/moviedetail.scss";
 
 export default function MovieDetails(props) {
   console.log(props);
@@ -6,25 +7,46 @@ export default function MovieDetails(props) {
     title,
     popularity,
     overview: synopsis,
-    genres,
+    genres: genresList,
     original_language: language,
     runtime: duration,
   } = props.attributes;
-
+  const genres = genresList
+    .map((item) => {
+      return item.name;
+    })
+    .join(", ");
   return (
-    <div>
-      <div className="movie-title">
+    <div className="wrapper">
+      <div className="container">
         <h1>{title}</h1>
-      </div>
-      <div className="movie-popularity">POPULARITY{popularity}</div>
-      <div className="movie-synopsis">SYNOPSIS{synopsis}</div>
-      <div className="movie-genre">{}</div>
-      <div className="movie-language">LANGUAGE{language}</div>
-      <div className="movie-duration">DURATION{duration}</div>
-      <div className="movie-book">
-        <a target="_blank" href="https://www.cathaycineplexes.com.sg/">
+        <a
+          target="_blank"
+          href="https://www.cathaycineplexes.com.sg/"
+          className="button"
+        >
           BOOK NOW
         </a>
+      </div>
+      <div className="container">
+        <h4>POPULARITY</h4>
+        {popularity}
+      </div>
+      <div className="container">
+        <h4>SYNOPSIS</h4>
+        {synopsis}
+      </div>
+      <div className="container">
+        <h4>GENRE</h4>
+        {genres}
+      </div>
+      <div className="container">
+        <h4>LANGUAGE</h4>
+        {language}
+      </div>
+      <div className="container">
+        <h4>DURATION</h4>
+        {duration + " mins"}
       </div>
     </div>
   );
