@@ -10,6 +10,12 @@ body {
   text-align: center;
 }
 
+.dropdown {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 20px 10px 0px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
