@@ -21,7 +21,6 @@ h4 {
   padding-left: 10px;
   border-top: 2px solid $borderColor;
   &:first-child {
-    border-top: hidden;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;

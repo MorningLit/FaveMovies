@@ -8,19 +8,6 @@ body {
 
 .home {
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.header {
-  padding: 10px 0px;
-
-  h1 {
-    font-size: 42px;
-    background: -webkit-linear-gradient($favePrimaryColor, $faveSecondaryColor);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 }
 
 .grid {

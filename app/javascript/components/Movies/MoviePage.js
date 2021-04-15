@@ -21,9 +21,6 @@ export default function Movies() {
   });
   return (
     <div className="home">
-      <div className="header">
-        <h1>Fave</h1>
-      </div>
       <div className="grid">{list}</div>
     </div>
   );
