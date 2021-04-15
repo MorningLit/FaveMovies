@@ -12,7 +12,6 @@ export default function Movies() {
     axios
       .get(movieLink)
       .then((data) => {
-        console.log(data.data.results);
         setMovies(
           data.data.results.sort(
             (a, b) => new Date(b.release_date) - new Date(a.release_date)
@@ -27,7 +26,6 @@ export default function Movies() {
   });
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     switch (event.target.value) {
       case "dateAsc":
         setMovies([

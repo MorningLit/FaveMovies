@@ -8,6 +8,7 @@ body {
 
 .home {
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .dropdown {
@@ -20,6 +21,8 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
-  row-gap: 5px;
-  width: 100%;
+  row-gap: 8px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
 }
