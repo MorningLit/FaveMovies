@@ -2,10 +2,11 @@ import React from "react";
 import "../Style/moviedetail.scss";
 
 export default function MovieDetails(props) {
-  console.log(props);
+  const languageNames = new Intl.DisplayNames(["en"], { type: "language" });
   const {
     title,
     popularity,
+    vote_average: rating,
     overview: synopsis,
     genres: genresList,
     original_language: language,
@@ -29,8 +30,14 @@ export default function MovieDetails(props) {
         </a>
       </div>
       <div className="container">
-        <h4>POPULARITY</h4>
-        {popularity}
+        <div className="popularity-container">
+          <h4>POPULARITY</h4>
+          {popularity}
+        </div>
+        <div>
+          <h4>RATING</h4>
+          {rating}
+        </div>
       </div>
       <div className="container">
         <h4>SYNOPSIS</h4>
@@ -42,7 +49,7 @@ export default function MovieDetails(props) {
       </div>
       <div className="container">
         <h4>LANGUAGE</h4>
-        {language}
+        {languageNames.of(language)}
       </div>
       <div className="container">
         <h4>DURATION</h4>
