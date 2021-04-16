@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import Movie from "./Movie";
 import axios from "axios";
 import "../Style/moviepage.scss";
+import BeatLoader from "react-spinners/BeatLoader";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
-  const [filterBy, setFilterBy] = useState("dateAsc");
   const [pageNumber, setPageNumber] = useState(1);
+  const [filterBy, setFilterBy] = useState("dateAsc");
 
   const movieLink =
-    "http://api.themoviedb.org/3/discover/movie?api_key=328c283cd27bd1877d9080ccb1604c91&primary_release_date.lte=2016-12-31&sort_by=release_date.desc&page=";
+    "https://api.themoviedb.org/3/movie/popular?api_key=328c283cd27bd1877d9080ccb1604c91&language=en-US&page=";
   useEffect(() => {
     axios
       .get(movieLink + pageNumber)
@@ -42,50 +43,54 @@ export default function Movies() {
 
   const handleChange = (event) => {
     setFilterBy(event.target.value);
-    movieSortBy(filterBy, movies);
+    movieSortBy(event.target.value, movies);
   };
 
   const movieSortBy = (value, currentMovies) => {
     switch (value) {
       case "dateAsc":
         setMovies([
-          currentMovies.sort(
+          ...currentMovies.sort(
             (a, b) => new Date(b.release_date) - new Date(a.release_date)
           ),
         ]);
         break;
       case "dateDsc":
         setMovies([
-          currentMovies.sort(
+          ...currentMovies.sort(
             (a, b) => new Date(a.release_date) - new Date(b.release_date)
           ),
         ]);
         break;
       case "titleAsc":
         setMovies([
-          currentMovies.sort((a, b) => a.title.localeCompare(b.title)),
+          ...currentMovies.sort((a, b) => a.title.localeCompare(b.title)),
         ]);
         break;
       case "titleDsc":
         setMovies([
-          currentMovies.sort((a, b) => b.title.localeCompare(a.title)),
+          ...currentMovies.sort((a, b) => b.title.localeCompare(a.title)),
         ]);
         break;
       case "ratingAsc":
         setMovies([
-          currentMovies.sort((a, b) => a.vote_average - b.vote_average),
+          ...currentMovies.sort((a, b) => a.vote_average - b.vote_average),
         ]);
         break;
       case "ratingDsc":
         setMovies([
-          currentMovies.sort((a, b) => b.vote_average - a.vote_average),
+          ...currentMovies.sort((a, b) => b.vote_average - a.vote_average),
         ]);
         break;
       case "popularityAsc":
-        setMovies([currentMovies.sort((a, b) => a.popularity - b.popularity)]);
+        setMovies([
+          ...currentMovies.sort((a, b) => a.popularity - b.popularity),
+        ]);
         break;
       case "popularityDsc":
-        setMovies([currentMovies.sort((a, b) => b.popularity - a.popularity)]);
+        setMovies([
+          ...currentMovies.sort((a, b) => b.popularity - a.popularity),
+        ]);
         break;
       default:
         console.log(value);
@@ -95,8 +100,8 @@ export default function Movies() {
 
   const handleScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
+      window.innerHeight + document.documentElement.scrollTop >=
+      document.body.offsetHeight
     ) {
       setIsFetching(true);
     }
@@ -109,10 +114,10 @@ export default function Movies() {
         .then((resp) => {
           console.log(resp);
           let newMovies = [...movies, ...resp.data.results];
-          console.log(newMovies);
           setMovies(newMovies);
           setIsFetching(false);
           setPageNumber(pageNumber + 1);
+          setFilterBy("");
         })
         .catch((err) => {
           console.log(err);
@@ -124,7 +129,10 @@ export default function Movies() {
     <div className="home">
       <div className="dropdown">
         <label htmlFor="filter">Filter by:</label>
-        <select id="filter" onChange={handleChange}>
+        <select id="filter" onChange={handleChange} value={filterBy}>
+          <option value="" disabled hidden>
+            Choose here
+          </option>
           <option value="dateAsc">Date Ascending</option>
           <option value="dateDsc">Date Descending</option>
           <option value="titleAsc">Title Ascending</option>
@@ -136,6 +144,7 @@ export default function Movies() {
         </select>
       </div>
       <div className="grid">{list}</div>
+      <BeatLoader loading={isFetching} />
     </div>
   );
 }
