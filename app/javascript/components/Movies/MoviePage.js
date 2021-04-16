@@ -5,64 +5,119 @@ import "../Style/moviepage.scss";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [filterBy, setFilterBy] = useState("dateAsc");
+  const [pageNumber, setPageNumber] = useState(1);
+
   const movieLink =
-    "http://api.themoviedb.org/3/discover/movie?api_key=328c283cd27bd1877d9080ccb1604c91&primary_release_date.lte=2016-12-31&sort_by=release_date.desc&page=1";
+    "http://api.themoviedb.org/3/discover/movie?api_key=328c283cd27bd1877d9080ccb1604c91&primary_release_date.lte=2016-12-31&sort_by=release_date.desc&page=";
   useEffect(() => {
     axios
-      .get(movieLink)
-      .then((data) => {
-        console.log(data);
+      .get(movieLink + pageNumber)
+      .then((resp) => {
+        console.log(resp);
         setMovies(
-          data.data.results.sort(
+          resp.data.results.sort(
             (a, b) => new Date(b.release_date) - new Date(a.release_date)
           )
         );
+        setPageNumber(pageNumber + 1);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!isFetching) return;
+    fetchMoreListItems();
+  }, [isFetching]);
 
   const list = movies.map((item) => {
     return <Movie key={item.id} props={item}></Movie>;
   });
 
   const handleChange = (event) => {
-    switch (event.target.value) {
+    setFilterBy(event.target.value);
+    movieSortBy(filterBy, movies);
+  };
+
+  const movieSortBy = (value, currentMovies) => {
+    switch (value) {
       case "dateAsc":
         setMovies([
-          ...movies.sort(
+          currentMovies.sort(
             (a, b) => new Date(b.release_date) - new Date(a.release_date)
           ),
         ]);
         break;
       case "dateDsc":
         setMovies([
-          ...movies.sort(
+          currentMovies.sort(
             (a, b) => new Date(a.release_date) - new Date(b.release_date)
           ),
         ]);
         break;
       case "titleAsc":
-        setMovies([...movies.sort((a, b) => a.title.localeCompare(b.title))]);
+        setMovies([
+          currentMovies.sort((a, b) => a.title.localeCompare(b.title)),
+        ]);
         break;
       case "titleDsc":
-        setMovies([...movies.sort((a, b) => b.title.localeCompare(a.title))]);
+        setMovies([
+          currentMovies.sort((a, b) => b.title.localeCompare(a.title)),
+        ]);
         break;
       case "ratingAsc":
-        setMovies([...movies.sort((a, b) => a.vote_average - b.vote_average)]);
+        setMovies([
+          currentMovies.sort((a, b) => a.vote_average - b.vote_average),
+        ]);
         break;
       case "ratingDsc":
-        setMovies([...movies.sort((a, b) => b.vote_average - a.vote_average)]);
+        setMovies([
+          currentMovies.sort((a, b) => b.vote_average - a.vote_average),
+        ]);
         break;
       case "popularityAsc":
-        setMovies([...movies.sort((a, b) => a.popularity - b.popularity)]);
+        setMovies([currentMovies.sort((a, b) => a.popularity - b.popularity)]);
         break;
       case "popularityDsc":
-        setMovies([...movies.sort((a, b) => b.popularity - a.popularity)]);
+        setMovies([currentMovies.sort((a, b) => b.popularity - a.popularity)]);
         break;
       default:
-        console.log(event.target.value);
+        console.log(value);
         break;
     }
+  };
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      setIsFetching(true);
+    }
+  };
+
+  const fetchMoreListItems = () => {
+    setTimeout(() => {
+      axios
+        .get(movieLink + pageNumber)
+        .then((resp) => {
+          console.log(resp);
+          let newMovies = [...movies, ...resp.data.results];
+          console.log(newMovies);
+          setMovies(newMovies);
+          setIsFetching(false);
+          setPageNumber(pageNumber + 1);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, 2000);
   };
 
   return (
