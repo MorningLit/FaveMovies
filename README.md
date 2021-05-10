@@ -18,22 +18,22 @@ Coming soon!
 
 # Screenshots
 
-![main](public\main.png)
+![main](public/main.png)
 
 **Main page**
 
-![details](public\details.png)
+![details](public/details.png)
 
 **Details page**
 
-![loading](public\loading.png)
+![loading](public/loading.png)
 
 **Fetching movies when scrolled to bottom of page**
 
-![afterloading](public\afterloading.png)
+![afterloading](public/afterloading.png)
 
 **Movies fetched**
 
-![mobilefriendly](public\mobilefriendly.png)
+![mobilefriendly](public/mobilefriendly.png)
 
 **Mobile-friendly UI**
