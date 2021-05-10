@@ -1,74 +1,39 @@
-## Fave Technical Assignment
+# **FaveMovies**
 
-### Introduction
-This assignment helps us better understand your ability to solve problems and fulfil task requirements with technical solutions. We would like to get an impression of how you write code in the real world. We will be evaluating your communication skills, development capabilities, and your interpretation of what good, clean, production-ready code should look like.
+FaveMovies is a standalone movie website that pulls data from [TMDb](https://www.themoviedb.org/ ) and has the list of features:
 
-### Scenario
-Cinema operators such as Cathay are one of the most popular merchants we have in Fave. We want to build an app to help our users discover movies easily.
+- Movie details which include Poster image, Title and Popularity and a link that shows more details
+- A dedicated detailed movie page which include: Synopsis, Genres, Language, Duration
+- Mobile-friendly UI
+- Ordered by release date (default), alphabetical and rating
+- Loads more movies when scrolled to bottom
 
-### Requirements
-Create a standalone movie app / mobile web(responsive UI) with the following screens:
 
-### **Home screen with list of available movies**
 
-- Ordered by release date (default), alphabetical, rating - can use dropdown 
-- Pull to refresh
-- Load when scrolled to bottom
-- Each movie to include:
-  - Poster/Backdrop image
-  - Title
-  - Popularity
-    
-### **Detail screen**
-Movie details should have the following:
-- Synopsis
-- Genres
-- Language
-- Duration
-- Book the movie (simulate opening of this [link](https://www.cathaycineplexes.com.sg/) in a web view)
+# **Website**
 
-### **Frontend Design**
-It is up to you to design the UI. Simple is good.
+Coming soon!
 
-### **Backend**
-Use the API from [TMDb](https://developers.themoviedb.org/3/getting-started/introduction) as your data source.
 
-You can use our API Key: `328c283cd27bd1877d9080ccb1604c91`
-  
-**Sample requests:**
 
-Listing
+# Screenshots
 
-```
-http://api.themoviedb.org/3/discover/movie?api_key=328c283cd27bd1877d9080ccb1604c91&primary_release_date.lte=2016-12-31&sort_by=release_date.desc&page=1
-```
+![main](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\main.png)
 
-Detail
+**Main page**
 
-```
-http://api.themoviedb.org/3/movie/328111?api_key=328c283cd27bd1877d9080ccb1604c91
-```
+![details](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\details.png)
 
-### Technical requirements:
+**Details page**
 
-| iOS | Android | Web |
-| ----------- | ----------- | ----------- |
-| Minimum Swift 4.0 | Kotlin or Java | React based framework (ReactJS, create-react-app, etc) or no framework (HTML + jQuery) |
-| Usage of RxSwift + MVVM | RxJava or RxKotlin or Coroutine | CSS or SASS |
-| Dependency Injection | MVVM or VIPER | Use context API & hooks (for React), window variable (for no framework) |
-| | Dependency Injection - Dagger or Koin or Hilt | Use correct routes, param & URL (navigation required) |
-| | Data Binding | Using typescript is a plus point (for React) |
+![loading](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\loading.png)
 
-We expect unit tests for the main functionalities only.
-You can use third party libraries.
+**Fetching movies when scrolled to bottom of page**
 
-### Code Repo
-Please use this repo for your commits.
+![afterloading](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\afterloading.png)
 
-## Evaluation Criteria
-- Clean, readable, maintainable, and performant code
-- Clear documentation that describe your assumptions and design considerations, you can use the wiki in this repo. Don't know how to create wiki? [Create one](https://docs.github.com/en/github/building-a-strong-community/adding-or-editing-wiki-pages)
-- Unit Tests will be evaluated
+**Movies fetched**
 
-That’s the end of the assignment, we hope you have fun!
-looking forward to your submission.
+![mobilefriendly](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\mobilefriendly.png)
+
+**Mobile-friendly UI**

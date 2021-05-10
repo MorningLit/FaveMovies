@@ -7,7 +7,7 @@ export default function NavBar() {
       <ul>
         <li>
           <a className="logo" href="/">
-            Fave
+            FaveMovies
           </a>
         </li>
       </ul>
