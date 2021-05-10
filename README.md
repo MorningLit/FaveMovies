@@ -18,22 +18,22 @@ Coming soon!
 
 # Screenshots
 
-![main](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\main.png)
+![main](public\main.png)
 
 **Main page**
 
-![details](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\details.png)
+![details](public\details.png)
 
 **Details page**
 
-![loading](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\loading.png)
+![loading](public\loading.png)
 
 **Fetching movies when scrolled to bottom of page**
 
-![afterloading](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\afterloading.png)
+![afterloading](public\afterloading.png)
 
 **Movies fetched**
 
-![mobilefriendly](C:\Users\ambro\Downloads\projects\websites\fave\MorningLit-20210409\fave\public\mobilefriendly.png)
+![mobilefriendly](public\mobilefriendly.png)
 
 **Mobile-friendly UI**
